@@ -1,13 +1,15 @@
 import "./styles.css";
 // @ts-ignore
-// import Home from "./Home";
+import Home from "./Home";
 // @ts-ignore
 import Layout from "./layout";
 // @ts-ignore
 import Trang1 from "./Tang1";
 // @ts-ignore
 import Trang2 from "./Trang2";
+// @ts-ignore
 import ListProduct from "./ListProduct";
+// @ts-ignore
 import Chitietsanpham from "./Chitietsanpham";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
