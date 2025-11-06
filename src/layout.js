@@ -1,8 +1,24 @@
 import "./access/css/layout.css";
 import logo from "./access/image/Ten-truong-do-1000x159.png";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate  } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Layout = () => {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/login");
+  };
   return (
     <html>
       <header>
@@ -37,7 +53,35 @@ const Layout = () => {
             </div>
             <div>Tim kiem</div>
           </div>
-          <div id="menubar" className="menubar"></div>
+
+          <div id="menubar" className="menubar">
+            <div className="menubar-left">
+              <a href="/menu1" className="menu-item">
+                Menu 1
+              </a>
+              <a href="/menu2" className="menu-item">
+                Menu 2
+              </a>
+              <a href="/menu3" className="menu-item">
+                Menu 3
+              </a>
+            </div>
+
+            <div className="menubar-right">
+              {user ? (
+                <>
+                  <span className="username">👤 {user.username}</span>
+                  <button className="logout-btn" onClick={handleLogout}>
+                    Đăng xuất
+                  </button>
+                </>
+              ) : (
+                <a href="/login" className="login-link">
+                  Đăng nhập
+                </a>
+              )}
+            </div>
+          </div>
         </div>
       </header>
       <body>
