@@ -25,8 +25,8 @@ const Layout = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/trang2" class="menutrai">
-                      SINH VIEN
+                    <Link to="/admin/products" class="menutrai">
+                      QUẢN TRỊ
                     </Link>
                   </li>
                 </ul>
