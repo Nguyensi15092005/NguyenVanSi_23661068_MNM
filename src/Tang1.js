@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Trang1 = () => {
   const navigate = useNavigate();
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", margin: "90px 0 0 0" }}>
       <h2>Danh sách sản phẩm</h2>
       <div
         style={{

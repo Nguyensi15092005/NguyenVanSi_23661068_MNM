@@ -47,6 +47,7 @@ const Trang2 = () => {
               borderRadius: "8px",
               padding: "10px",
               textAlign: "center",
+              margin: "90px 0 0 0",
             }}
           >
             <img

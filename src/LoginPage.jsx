@@ -59,7 +59,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="login-wrapper" style={{ margin: "90px 0 0 0" }}>
       <div className="login-card">
         <img src={anhlogo1} alt="Logo" className="login-logo" />
 

@@ -119,7 +119,7 @@ const Layout = () => {
         </div>
       </header>
       <body>
-        <Outlet />
+        <Outlet/>
       </body>
       <footer></footer>
     </html>
