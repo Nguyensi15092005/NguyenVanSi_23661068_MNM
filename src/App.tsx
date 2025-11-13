@@ -21,6 +21,7 @@ import LogoutPage from "./LogoutPage";
 import ProtectedRoute from "./ProtectedRoute";
 // @ts-ignore
 import ListProducts_SP_Admin from "./ListProducts_SP_Admin";
+// @ts-ignore
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {

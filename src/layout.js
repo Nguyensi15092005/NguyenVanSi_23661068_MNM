@@ -1,6 +1,6 @@
-import "./access/css/layout.css";
-import logo from "./access/image/Ten-truong-do-1000x159.png";
-import { Outlet, Link, useNavigate  } from "react-router-dom";
+import "./assets/css/layout.css";
+import logo from "./access/image/logo.jpg";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Layout = () => {
@@ -22,9 +22,9 @@ const Layout = () => {
   return (
     <html>
       <header>
-        <link rel="stylesheet" href="access/css/layout.css" />
+        <link rel="stylesheet" href="assets/css/layout.css" />
 
-        <div id="header" className="header">
+        {/* <div id="header" className="header">
           <div id="banner" className="banner">
             <div id="divmenutrai">
               <nav id="menutrai">
@@ -81,6 +81,40 @@ const Layout = () => {
                 </a>
               )}
             </div>
+          </div>
+        </div> */}
+        <div className="header">
+          <div className="logo">
+            <img src={logo} />
+          </div>
+          <ul className="menu">
+            <li>
+              <Link to="/">TRANG CHỦ</Link>
+            </li>
+            <li>
+              <Link to="/trang1">SẢN PHẨM</Link>
+            </li>
+            <li>
+              <Link to="/admin/products">QUẢN LÝ</Link>
+            </li>
+          </ul>
+          <div className="search">
+            <input type="text" placeholder="Tim kiem" />
+            <button>Tìm</button>
+          </div>
+          <div className="auth-right">
+            {user ? (
+              <>
+                <span className="username">👤 {user.username}</span>
+                <button className="logout-btn" onClick={handleLogout}>
+                  Đăng xuất
+                </button>
+              </>
+            ) : (
+              <a href="/login" className="login-link">
+                Đăng nhập
+              </a>
+            )}
           </div>
         </div>
       </header>

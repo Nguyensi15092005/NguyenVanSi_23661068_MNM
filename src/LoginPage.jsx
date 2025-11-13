@@ -1,31 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import anhlogo1 from "./access/image/keylogin.png";
-import "./access/css/login.css";
+import anhlogo1 from "./assets/image/keylogin.png";
+import "./assets/css/login.css";
+import { supabase } from "./supabaseClient";
+
+import CryptoJS from "crypto-js";
 
 const LoginPage = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [user, setuser] = useState({});
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    const usernameinput = e.target.elements.username.value;
+    const passwordinput = e.target.elements.password.value;
+    const hashedPassword = CryptoJS.SHA256(passwordinput).toString();
+    console.log(hashedPassword);
 
-    setTimeout(() => {
-      if (username.trim() && password.trim()) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ username, role: "user" })
-        );
-        alert("✅ Đăng nhập thành công!");
-        navigate("/");
-      } else {
-        alert("❌ Vui lòng nhập đầy đủ thông tin!");
+    try {
+      const { data, error } = await supabase
+        .from("tbl_user")
+        .select("*")
+        .eq("username", usernameinput)
+        .eq("password_hash", hashedPassword)
+        .single();
+
+      if (error) {
+        alert("Sai thông tin đăng nhập");
       }
-      setLoading(false);
-    }, 1000);
+
+      if (data) {
+        console.log("Đăng nhập thành công:", data);
+        // setuser(data); // lưu user vào state
+        setTimeout(() => {
+          if (data) {
+            localStorage.setItem(
+              "user",
+              JSON.stringify({ username: data.username, role: "user" })
+            );
+            alert("✅ Đăng nhập thành công!");
+            navigate("/");
+          } else {
+            alert("❌ Vui lòng nhập đầy đủ thông tin!");
+          }
+          setLoading(false);
+        }, 1000);
+      } else {
+        console.log("Sai tên đăng nhập hoặc mật khẩu");
+      }
+    } catch (err) {
+      console.error("Lỗi khi đăng nhập:", err.message);
+    }
+    setLoading(true);
   };
 
   return (
@@ -42,8 +72,9 @@ const LoginPage = () => {
             <input
               type="text"
               placeholder="Nhập tên đăng nhập..."
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              name="username"
+              // value={username}
+              // onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
@@ -52,8 +83,9 @@ const LoginPage = () => {
             <input
               type="password"
               placeholder="Nhập mật khẩu..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              // value={password}
+              // onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
