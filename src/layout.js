@@ -1,5 +1,5 @@
 import "./assets/css/layout.css";
-import logo from "./access/image/logo.jpg";
+import logo from "./assets/image/logo.jpg";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -23,66 +23,13 @@ const Layout = () => {
     <html>
       <header>
         <link rel="stylesheet" href="assets/css/layout.css" />
-
-        {/* <div id="header" className="header">
-          <div id="banner" className="banner">
-            <div id="divmenutrai">
-              <nav id="menutrai">
-                <ul className="menutrai" style={{ width: "250px" }}>
-                  <li>
-                    <Link to="/" class="menutrai">
-                      TRANG CHU
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="menutrai" to="/trang1">
-                      {" "}
-                      EGOV
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/admin/products" class="menutrai">
-                      QUẢN TRỊ
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div style={{ width: "1000px" }}>
-              <img src={logo} width="500" height="80" />
-            </div>
-            <div>Tim kiem</div>
-          </div>
-
-          <div id="menubar" className="menubar">
-            <div className="menubar-left">
-              <a href="/menu1" className="menu-item">
-                Menu 1
-              </a>
-              <a href="/menu2" className="menu-item">
-                Menu 2
-              </a>
-              <a href="/menu3" className="menu-item">
-                Menu 3
-              </a>
-            </div>
-
-            <div className="menubar-right">
-              {user ? (
-                <>
-                  <span className="username">👤 {user.username}</span>
-                  <button className="logout-btn" onClick={handleLogout}>
-                    Đăng xuất
-                  </button>
-                </>
-              ) : (
-                <a href="/login" className="login-link">
-                  Đăng nhập
-                </a>
-              )}
-            </div>
-          </div>
-        </div> */}
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
         <div className="header">
           <div className="logo">
             <img src={logo} />
@@ -119,9 +66,65 @@ const Layout = () => {
         </div>
       </header>
       <body>
-        <Outlet/>
+        <Outlet />
       </body>
-      <footer></footer>
+      <footer>
+        <div className="footer">
+          <div className="footer-left">
+            <div className="l-title">Thông tin liên hệ</div>
+            <ul>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <p>11/15 Đường số 5 HCM</p>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <p>0987654321</p>
+              </li>
+              <li>
+                <i class="fa-brands fa-telegram"></i>
+                <p>Nguyễn Văn Sĩ</p>
+              </li>
+              <li>
+                <i class="fa-brands fa-facebook"></i>
+                <p>Nguyễn Văn Sĩ</p>
+              </li>
+              <li>
+                <i class="fa-brands fa-tiktok"></i>
+                <p>Nguyễn Văn Sĩ</p>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-center">
+            <div className="c-title">Liên kết</div>
+            <ul>
+              <li>
+                <Link to="/">Trang chủ</Link>
+              </li>
+              <li>
+                <Link to="/trang1">Sản phẩm</Link>
+              </li>
+              <li>
+                <Link to="/admin/products">Quản lý</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-right">
+            <div className="r-title">Địa chỉ liên kết</div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.063798375963!2d106.59807837512889!3d10.806425758639476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b9211123c6f%3A0xab901e14926551c!2zMTEgxJDGsOG7nW5nIHPhu5EgNSwgQsOsbmggSMawbmcgSG_DoCwgQsOsbmggVMOibiwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oIDcxOTAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1763340661361!5m2!1svi!2s"
+              width="100%"
+              height="250"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Google Map"
+            />
+          </div>
+        </div>
+      </footer>
     </html>
   );
 };
