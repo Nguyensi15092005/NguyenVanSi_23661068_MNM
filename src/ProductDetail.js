@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
+import { useCart } from "./CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
+
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -33,6 +36,15 @@ const ProductDetail = () => {
       </div>
     );
   }
+
+  const handleAddToCart = (p) => {
+    // 🛑 QUAN TRỌNG: Ngăn sự kiện click lan ra thẻ cha (tránh chuyển trang)
+    console.log("Product", product);
+    if (p != null) {
+      addToCart(p);
+      alert(`Đã thêm "${p.title}" vào giỏ hàng!`);
+    }
+  };
 
   return (
     <div
@@ -131,7 +143,7 @@ const ProductDetail = () => {
               borderRadius: "6px",
               cursor: "pointer",
             }}
-            onClick={() => alert("Đã thêm vào giỏ hàng!")}
+            onClick={(e) => handleAddToCart(product)}
           >
             🛒 Thêm vào giỏ hàng
           </button>

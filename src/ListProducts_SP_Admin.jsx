@@ -29,7 +29,13 @@ const ListProducts_SP_Admin = () => {
   };
 
   return (
-    <div className="container" style={{ margin: "90px 0 0 0" }}>
+    <div
+      className="container"
+      style={{
+        maxWidth: "1000px",
+        margin: "100px auto 20px",
+      }}
+    >
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="table-actions">
           <button
