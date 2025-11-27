@@ -8,6 +8,13 @@ export interface Product {
   image: string;
 }
 
+export interface CartItem {
+  product: Product;
+  quantity: number;
+  // Bạn có thể thêm các field logic khác từ Flutter nếu cần, ví dụ:
+  // createdDate?: Date;
+}
+
 export const products: Product[] = [
   {
     id: 1,

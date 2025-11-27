@@ -2,10 +2,20 @@ import "./assets/css/layout.css";
 import logo from "./assets/image/logo.jpg";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCart } from "./CartContext";
 
 const Layout = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+
+  // 3. Lấy cartItems từ Context
+  const { cartItems } = useCart();
+
+  // 4. Tính tổng số lượng sản phẩm (để hiển thị badge số nhỏ)
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -30,6 +40,7 @@ const Layout = () => {
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         />
+
         <div className="header">
           <div className="logo">
             <img src={logo} />
@@ -49,6 +60,13 @@ const Layout = () => {
             <input type="text" placeholder="Tim kiem" />
             <button>Tìm</button>
           </div>
+          <Link to="chat" className="chatAI">
+            <i class="fa-solid fa-comment-dots"></i>
+          </Link>
+          <Link to="/cart" className="cart">
+            <i class="fa-solid fa-cart-plus"></i>
+            {totalQuantity > 0 ? <span>{totalQuantity}</span> : "0"}
+          </Link>
           <div className="auth-right">
             {user ? (
               <>

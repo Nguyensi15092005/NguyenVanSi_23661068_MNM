@@ -19,7 +19,10 @@ export default function Chitietsanpham() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <button onClick={() => navigate(-1)} style={{ marginBottom: "20px" }}>
+      <button
+        onClick={() => navigate(-1)}
+        style={{ marginBottom: "20px", marginTop: "80px" }}
+      >
         ⬅ Quay lại
       </button>
 

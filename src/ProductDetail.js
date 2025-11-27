@@ -39,6 +39,7 @@ const ProductDetail = () => {
       style={{
         maxWidth: "900px",
         margin: "30px auto",
+        marginTop: "110px",
         padding: "20px",
         border: "1px solid #ddd",
         borderRadius: "10px",
@@ -52,6 +53,7 @@ const ProductDetail = () => {
           backgroundColor: "#007bff",
           color: "#fff",
           border: "none",
+          fontSize: "17px",
           padding: "8px 14px",
           borderRadius: "6px",
           cursor: "pointer",
@@ -89,6 +91,7 @@ const ProductDetail = () => {
               width: "100%",
               height: "100%",
               objectFit: "contain",
+              borderRadius: "10px",
             }}
           />
         </div>
@@ -122,6 +125,7 @@ const ProductDetail = () => {
               marginTop: "20px",
               backgroundColor: "#28a745",
               color: "#fff",
+              fontSize: "18px",
               border: "none",
               padding: "10px 16px",
               borderRadius: "6px",
